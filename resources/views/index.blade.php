@@ -11,9 +11,10 @@
                     </div>
                     <div class="card__data absolute text-white p-3 left-0 bottom-0 w-full">
                         <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
-                            <div class="text-xs gap-3 flex">
-                                <span>7.3</span>
-                                <span>2024</span>
+                            <div class="text-xs flex items-center">
+                                <ion-icon name="star" class="text-orange-600"></ion-icon>
+                                <span class="ml-1">7.3</span>
+                                <span class="mx-2">2024</span>
                                 <span>140m</span>
                             </div>
                             <h3 class="text-lg font-semibold md:text-2xl">King Kong KOng Ki</h3>
@@ -74,17 +75,17 @@
                 <h2 class="uppercase text-lg tracking-[.15em]">Popular Movies</h2>
                 <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
             </a>
-            <div class="grid grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 <div class="mt-8">
                     <a href="#">
                         <img src="/img/parasite.jpg" class="rounded-xl">
                     </a>
-                    <div class="mt-2 items-center">
+                    <div class="mt-2">
                         <a href="#" class="text-lg mt-2 hover:text-gray-300">Parasite</a>
-                        <div class="flex items-center text-gray-400 gap-2 text-sm">
-                            <ion-icon name="star" class="text-orange-600"></ion-icon>
-                            <span>85%</span>
-                            <span>|</span>
+                        <div class="flex items-center text-gray-400 text-sm mt-1">
+                            <ion-icon name="star" class="text-orange-500"></ion-icon>
+                            <span class="ml-1">85%</span>
+                            <span class="mx-2">|</span>
                             <span>Feb 20, 2020</span>
                         </div>
                     </div>
@@ -92,7 +93,7 @@
             </div>
         </div>
     </div>
-</section>
+</section><!-- end of popular movies -->
 
 
 
