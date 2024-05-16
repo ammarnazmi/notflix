@@ -12,7 +12,7 @@ class MovieCard extends Component
     public function __construct($movie, $genres)
     {
         $this->movie = $movie;
-        $this->genres = $gen
+        $this->genres = $genres;
     }
 
     /**
