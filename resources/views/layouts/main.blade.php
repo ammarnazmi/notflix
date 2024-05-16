@@ -18,7 +18,7 @@
     <nav class="border-b border-gray-800 ">
         <div class="container md:flex md:items-center mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <a href="#">
+                <a href="{{ route('movies.index') }}">
                     <img class="w-36" src="{{ asset('images/NotFlix.png') }}" alt="Logo">
                 </a>
                 <span class="text-3xl cursor-pointer md:hidden block">
@@ -32,7 +32,7 @@
                 ease-in duration-200  bg-slate-800 md:bg-inherit
                 border-gray-800 md:border-none font-semibold">
                     <li class="my-6 md:my-0">
-                        <a class="hover:text-red-500 " href="#">Movies</a>
+                        <a class="hover:text-red-500 " href="{{ route('movies.index') }}">Movies</a>
                     </li>
                     <li class="my-6 md:my-0">
                         <a class="hover:text-red-500" href="#">TV Shows</a>

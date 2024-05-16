@@ -5,53 +5,25 @@
     <div class="card__container swiper md:ps-5 md:pe-5 ">
         <div class="card__content ms-[1.75rem] me-[1.75rem] overflow-hidden rounded-[1.25rem] ">
             <div class="swiper-wrapper">
-                <article class="card__article w-[300px] rounded-[1.25rem] overflow-hidden flex relative swiper-slide">
-                    <div class="card__image relative">
-                        <img src="https://wallpapercave.com/wp/wp4566625.jpg" class="">
-                    </div>
-                    <div class="card__data absolute text-white p-3 left-0 bottom-0 w-full">
-                        <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
-                            <div class="text-xs flex items-center">
-                                <ion-icon name="star" class="text-orange-600"></ion-icon>
-                                <span class="ml-1">7.3</span>
-                                <span class="mx-2">2024</span>
-                                <span>140m</span>
+                @foreach ($popularMovies as $movie)
+                    @if($loop->index < 5)
+                        <article class="card__article w-[300px] rounded-[1.25rem] overflow-hidden flex relative swiper-slide">
+                            <div class="card__image relative hover:opacity-75">
+                                <img src="https://image.tmdb.org/t/p/w500/{{$movie['backdrop_path']}}" class="">
                             </div>
-                            <h3 class="text-lg font-semibold md:text-2xl">King Kong KOng Ki</h3>
-                        </div>
-                    </div>
-                </article>
-                <article class="card__article w-[300px] rounded-[1.25rem] overflow-hidden flex relative swiper-slide">
-                    <div class="card__image relative">
-                        <img src="https://wallpapercave.com/wp/wp4566616.jpg" class="">
-                    </div>
-                    <div class="card__data absolute text-white p-3 left-0 bottom-0 w-full">
-                        <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
-                            <div class="text-xs gap-3 flex">
-                                <span>7.3</span>
-                                <span>2024</span>
-                                <span>140m</span>
+                            <div class="card__data absolute text-white p-3 left-0 bottom-0 w-full">
+                                <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
+                                    <div class="text-xs flex items-center">
+                                        <ion-icon name="star" class="text-orange-600"></ion-icon>
+                                        <span class="ml-1">{{ $movie['vote_average'] * 10 . '%'}}</span>
+                                        <span class="mx-2">{{ \Carbon\Carbon::parse($movie['release_date'])->format('Y') }}</span>
+                                    </div>
+                                    <h3 class="text-base font-semibold md:text-lg">{{ $movie['title'] }}</h3>
+                                </div>
                             </div>
-                            <h3 class="text-lg font-semibold md:text-2xl">King Kong KOng Ki</h3>
-                        </div>
-                    </div>
-                </article>
-                <article class="card__article w-[300px] rounded-[1.25rem] overflow-hidden flex relative swiper-slide">
-                    <div class="card__image relative">
-                        <img src="https://wallpaperaccess.com/full/1349214.jpg" class="">
-                        <!-- <img src="avatar-1.png" class=""> -->
-                    </div>
-                    <div class="card__data absolute text-white p-3 left-0 bottom-0 w-full">
-                        <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
-                            <div class="text-xs gap-3 flex">
-                                <span>7.3</span>
-                                <span>2024</span>
-                                <span>140m</span>
-                            </div>
-                            <h3 class="text-lg font-semibold md:text-2xl">King Kong KOng Ki</h3>
-                        </div>
-                    </div>
-                </article>
+                        </article>
+                    @endif
+                @endforeach
             </div>
         </div>
 
@@ -71,29 +43,32 @@
 
     <div class="px-4 pt-16">
         <div class="popular-movies">
-            <a href="#" class="popular-movies-title flex gap-2  hover:text-red-600 font-semibold items-center">
+            <a href="#" class="popular-movies-title flex gap-2 w-fit text-red-600 hover:text-white font-semibold items-center bg-black/50 rounded-full pl-3 py-1 pr-1">
                 <h2 class="uppercase text-lg tracking-[.15em]">Popular Movies</h2>
                 <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
             </a>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                <div class="mt-8">
-                    <a href="#">
-                        <img src="/img/parasite.jpg" class="rounded-xl">
-                    </a>
-                    <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray-300">Parasite</a>
-                        <div class="flex items-center text-gray-400 text-sm mt-1">
-                            <ion-icon name="star" class="text-orange-500"></ion-icon>
-                            <span class="ml-1">85%</span>
-                            <span class="mx-2">|</span>
-                            <span>Feb 20, 2020</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
+                @foreach ($nowPlaying as $movie)
+                    <x-movie-card :movie="$movie" :genres="$genres"/>
+                @endforeach
             </div>
         </div>
-    </div>
-</section><!-- end of popular movies -->
+    </div><!-- end of popular movies -->
+
+    <div class="px-4 pt-16 pb-5">
+        <div class="popular-movies">
+            <a href="#" class="popular-movies-title flex gap-2 w-fit text-red-600 hover:text-white font-semibold items-center bg-black/50 rounded-full pl-3 py-1 pr-1">
+                <h2 class="uppercase text-lg tracking-[.15em]">Now Playing</h2>
+                <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
+            </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
+                @foreach ($popularMovies as $movie)
+                    <x-movie-card :movie="$movie" :genres="$genres"/>
+                @endforeach
+            </div>
+        </div>
+    </div><!-- end of Now Playing movies -->
+</section>
 
 
 
@@ -117,6 +92,9 @@
             breakpoints: {
                 600:{
                     slidesPerView: 2,
+                },
+                1268:{
+                    slidesPerView: 3,
                 },
             }
         });
