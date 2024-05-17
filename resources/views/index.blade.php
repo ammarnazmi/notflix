@@ -15,13 +15,15 @@
                                 <div class="bg-black/30 backdrop-blur-md p-2 rounded-xl">
                                     <div class="text-xs flex items-center">
                                         <ion-icon name="star" class="text-orange-600"></ion-icon>
-                                        <span class="ml-1">{{ $movie['vote_average'] * 10 . '%'}}</span>
-                                        <span class="mx-2">{{ \Carbon\Carbon::parse($movie['release_date'])->format('Y') }}</span>
+                                        <span class="ml-1">{{ $movie['vote_average'] }}</span>
+                                        <span class="mx-2">{{ $movie['release_date']}}</span>
                                     </div>
                                     <h3 class="text-base font-semibold md:text-lg">{{ $movie['title'] }}</h3>
                                 </div>
                             </div>
                         </article>
+                    @else
+                        @break
                     @endif
                 @endforeach
             </div>
@@ -48,7 +50,7 @@
                 <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-                @foreach ($nowPlaying as $movie)
+                @foreach ($popularMovies as $movie)
                     <x-movie-card :movie="$movie" :genres="$genres"/>
                 @endforeach
             </div>
@@ -62,7 +64,7 @@
                 <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
             </a>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-                @foreach ($popularMovies as $movie)
+                @foreach ($nowPlaying as $movie)
                     <x-movie-card :movie="$movie" :genres="$genres"/>
                 @endforeach
             </div>

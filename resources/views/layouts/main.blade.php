@@ -44,17 +44,21 @@
             </div>
         </div>
     </nav>
+
+    @yield('content')
+    <footer class="bg-black/50 flex justify-center items-center w-full">
+        <p class="p-2">&copy; Ammar Nazmi 2024</p>
+    </footer>
     <script>
         function Menu(e) {
           let list = document.querySelector("ul");
 
           e.name === "menu"
             ? ((e.name = "close"),
-              list.classList.add("opacity-95"))
+              list.classList.add("opacity-100"))
             : ((e.name = "menu"),
-              list.classList.remove("opacity-95"));
+              list.classList.remove("opacity-100"));
         }
     </script>
-    @yield('content')
 </body>
 </html>
