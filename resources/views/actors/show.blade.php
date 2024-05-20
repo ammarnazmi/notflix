@@ -4,7 +4,7 @@
     <div class="movie-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
             <div class="flex-none">
-                <img src="{{ $actor['profile_pathgit push ']}}" alt="" class="w-64 md:w-96 rounded-xl">
+                <img src="{{ $actor['profile_path']}}" alt="" class="w-64 md:w-96 rounded-xl">
                 <ul class="flex items-center mt-4 gap-2">
                     <li class="hover:opacity-75 hover:scale-110">
                         <a href="" title="Facebook">
