@@ -38,7 +38,7 @@
                         <a class="hover:text-red-500" href="#">TV Shows</a>
                     </li>
                     <li class="my-6 md:my-0">
-                        <a class="hover:text-red-500" href="#">Actors</a>
+                        <a class="hover:text-red-500" href="{{ route('actors.index') }}">Actors</a>
                     </li>
                 </ul>
             </div>
@@ -60,5 +60,6 @@
               list.classList.remove("opacity-100"));
         }
     </script>
+    @yield('scripts')
 </body>
 </html>
