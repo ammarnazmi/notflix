@@ -6,18 +6,23 @@
             <div class="flex-none">
                 <img src="{{ $actor['profile_path']}}" alt="" class="w-64 md:w-96 rounded-xl">
                 <ul class="flex items-center mt-4 gap-2">
-                    <li class="hover:opacity-75 hover:scale-110">
-                        <a href="" title="Facebook">
-                            <ion-icon name="logo-facebook" class="text-2xl"></ion-icon>
-                        </a>
-                    </li>
-                    <li class="hover:opacity-75 hover:scale-110">
-                        <a href="" title="Insta">
-                            <ion-icon name="logo-instagram" class="text-2xl"></ion-icon>
-                        </a>
-                    </li>
+                    @if ($social['facebook'])
+                        <li class="hover:opacity-75 hover:scale-110">
+                            <a href="{{ $social['facebook'] }}" title="Facebook">
+                                <ion-icon name="logo-facebook" class="text-3xl"></ion-icon>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if ($social['instagram'])
+                        <li class="hover:opacity-75 hover:scale-110">
+                            <a href="{{ $social['instagram'] }}" title="Insta">
+                                <ion-icon name="logo-instagram" class="text-3xl"></ion-icon>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
-            </div>
+            </div><!--End of Social-->
 
             <div class="md:ml-24">
                 <h2 class="text-4xl font-semibold">{{ $actor['name'] }}</h2>
@@ -35,10 +40,15 @@
 
                     <h4 class="font-semibold mt-12">Known For</h4>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg-grid-cols-5 gap-8">
-                        <div class="mt-4">
-                            <a><img src="" class="hover:opacity-75 transition ease-in-out duration-150 hover:scale-105 rounded-xl"></a>
-                        </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                        @foreach ($knownForMovies as $knownForMovie)
+                            <div class="mt-4">
+                                <a href="{{ route('movies.show', $knownForMovie['id']) }}"><img src="{{ $knownForMovie['poster_path'] }}" class="hover:opacity-75 transition ease-in-out duration-150 hover:scale-105 rounded-xl"></a>
+                                <a href="#" class="text-sm leading-normal block text-gray-400 hover:text-white mt-1">
+                                    {{ $knownForMovie['title'] }}
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -50,6 +60,15 @@
             <div class="popular-movies-title flex gap-2 w-fit text-red-600 hover:text-white font-semibold items-center bg-black/50 rounded-full pl-3 py-1 pr-3">
                 <h2 class="uppercase text-xl font-semibold tracking-[.15em]">Credits</h2>
             </div>
+            <ul class="list-disc leading-loose pl-5 mt-8">
+                @foreach ($credits as $credit)
+                    <li>
+                        {{ $credit['realese_year'] }} &middot;
+                        <strong>{{ $credit['title'] }}</strong> as
+                        {{ $credit['character'] }}
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div> <!--End of credits-->
 @endsection
