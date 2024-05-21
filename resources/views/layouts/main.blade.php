@@ -32,10 +32,10 @@
                 ease-in duration-200  bg-slate-800 md:bg-inherit
                 border-gray-800 md:border-none font-semibold">
                     <li class="my-6 md:my-0">
-                        <a class="hover:text-red-500 " href="{{ route('movies.index') }}">Movies</a>
+                        <a class="hover:text-red-500" href="{{ route('movies.index') }}">Movies</a>
                     </li>
                     <li class="my-6 md:my-0">
-                        <a class="hover:text-red-500" href="#">TV Shows</a>
+                        <a class="hover:text-red-500" href="{{ route('tv.index')}}">TV Shows</a>
                     </li>
                     <li class="my-6 md:my-0">
                         <a class="hover:text-red-500" href="{{ route('actors.index') }}">Actors</a>

@@ -45,7 +45,9 @@ class ActorViewModel extends ViewModel
     {
         $castTitles = collect($this->credits)->get('cast');
 
-        return collect($castTitles)->where('media_type', 'movie')->sortByDesc('popularity')->take(5)
+        return collect($castTitles)->where('media_type', 'movie')
+            ->sortByDesc('popularity')
+            ->take(5)
             ->map(function($movie) {
                 return collect($movie)->merge([
                     'poster_path' => $movie['poster_path']

@@ -3,6 +3,7 @@
 namespace App\ViewModels;
 
 use Spatie\ViewModels\ViewModel;
+use Carbon\Carbon;
 
 class MoviesViewModel extends ViewModel
 {
@@ -49,7 +50,7 @@ class MoviesViewModel extends ViewModel
             return collect($movie)->merge([
                 'poster_path' => 'https://image.tmdb.org/t/p/w500/'.$movie['poster_path'],
                 'vote_average' => $movie['vote_average'] * 10 . '%',
-                'release_date' => \Carbon\Carbon::parse($movie['release_date'])->format('M d,Y'),
+                'release_date' => Carbon::parse($movie['release_date'])->format('M d,Y'),
                 'genres' => $this->genres(),
             ])->only([
                 'poster_path', 'id', 'genre_ids', 'title', 'vote_average', 'overview', 'realese_date', 'genres', 'backdrop_path',
